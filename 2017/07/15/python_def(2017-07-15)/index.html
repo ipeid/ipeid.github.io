@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python,函数,python多态," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="python基础学习之函数1.函数基础1.1什么是函数？为什么要用函数编程？ 什么是函数？ 一个函数就是将一些语句集合在一起的部件，它们能够不止一次地在程序中运行。函数还能够计算出一个返回值， 并能够改变作为函数输入的参数，而这些参数在代码运行时也许每次都不相同。 为什么要用函数？1.最大程度的重用和最小化代码冗余 2.流程的分解1.2函数相关的语句和表达式  123456789101112131">
+<meta name="keywords" content="python,函数,python多态">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python基础之函数">
+<meta property="og:url" content="http://yoursite.com/2017/07/15/python_def(2017-07-15)/index.html">
+<meta property="og:site_name" content="八宝周的博客">
+<meta property="og:description" content="python基础学习之函数1.函数基础1.1什么是函数？为什么要用函数编程？ 什么是函数？ 一个函数就是将一些语句集合在一起的部件，它们能够不止一次地在程序中运行。函数还能够计算出一个返回值， 并能够改变作为函数输入的参数，而这些参数在代码运行时也许每次都不相同。 为什么要用函数？1.最大程度的重用和最小化代码冗余 2.流程的分解1.2函数相关的语句和表达式  123456789101112131">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-31T15:34:29.289Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python基础之函数">
+<meta name="twitter:description" content="python基础学习之函数1.函数基础1.1什么是函数？为什么要用函数编程？ 什么是函数？ 一个函数就是将一些语句集合在一起的部件，它们能够不止一次地在程序中运行。函数还能够计算出一个返回值， 并能够改变作为函数输入的参数，而这些参数在代码运行时也许每次都不相同。 为什么要用函数？1.最大程度的重用和最小化代码冗余 2.流程的分解1.2函数相关的语句和表达式  123456789101112131">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/15/python_def(2017-07-15)/"/>
+
+
+
+
+
+  <title>python基础之函数 | 八宝周的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">八宝周的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/15/python_def(2017-07-15)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ipeid">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="八宝周的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python基础之函数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-15T11:22:00+08:00">
+                2017-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python基础/" itemprop="url" rel="index">
+                    <span itemprop="name">python基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="python基础学习之函数"><a href="#python基础学习之函数" class="headerlink" title="python基础学习之函数"></a>python基础学习之函数</h1><h2 id="1-函数基础"><a href="#1-函数基础" class="headerlink" title="1.函数基础"></a>1.函数基础</h2><h3 id="1-1什么是函数？为什么要用函数编程？"><a href="#1-1什么是函数？为什么要用函数编程？" class="headerlink" title="1.1什么是函数？为什么要用函数编程？"></a>1.1什么是函数？为什么要用函数编程？</h3><ul>
+<li>什么是函数？ 一个函数就是将一些语句集合在一起的部件，它们能够不止一次地在程序中运行。函数还能够计算出一个返回值， 并能够改变作为函数输入的参数，而这些参数在代码运行时也许每次都不相同。</li>
+<li>为什么要用函数？1.最大程度的重用和最小化代码冗余 2.流程的分解<h3 id="1-2函数相关的语句和表达式"><a href="#1-2函数相关的语句和表达式" class="headerlink" title="1.2函数相关的语句和表达式"></a>1.2函数相关的语句和表达式</h3></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Calls def是可执行的代码,一一函数并不存在，直到Python运行了def后才存在。</span></span><br><span class="line">eg:myfunc(<span class="string">"spam"</span>,<span class="string">"eggs"</span>,meat=ham)</span><br><span class="line"><span class="comment"># def创建了一个对象并将其赋值给某一变量名.</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">adder</span><span class="params">(a,b=<span class="number">1</span>,*c)</span>:</span></span><br><span class="line">    <span class="comment"># return将一个结果对象发送给调用者</span></span><br><span class="line">    <span class="keyword">return</span> a+b+c[<span class="number">0</span>]</span><br><span class="line"><span class="comment">#lambda创建一个对象但将其作为结果返回</span></span><br><span class="line"> Funcs = [<span class="keyword">lambda</span> x: x**<span class="number">2</span>,<span class="keyword">lambda</span> x: x*<span class="number">3</span>]</span><br><span class="line"><span class="comment">#yield 向调用者发回一个结果对象.但是记住它离开的地方</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">squares</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(x):</span><br><span class="line">        <span class="keyword">yield</span> i ** <span class="number">2</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">global声明了一个模块级的变量并被赋值,在默认情况下.所有在一个函数中被眠</span></span><br><span class="line"><span class="string">值的对象，是这个函数的本地变量，并且仅在这个函数运行的过程中存在。为了</span></span><br><span class="line"><span class="string">分配一个可以在整个模块中都可以使用的变量;名，函数需要在global语句中将它列</span></span><br><span class="line"><span class="string">举出来。通常情况下，变'量名往往需要关注它的作用域(也就是说变量存储的地</span></span><br><span class="line"><span class="string">方) ，并且是通过实赋值语句将变景名绑定至作用域的。</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">changer</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> x; x = <span class="string">'new'</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">nonlocal声明了将要赋值的一个封闭的函数变量。类似的， Python3.0中添加的</span></span><br><span class="line"><span class="string">nonlocal语句允许一个函数来赋值一条语泌封闭的def语句的作用域中已有的名</span></span><br><span class="line"><span class="string">称。这就允许封闭的函数作为保留状态的一个地方一一当一个函数调用的时候，信</span></span><br><span class="line"><span class="string">息被记住了一一而不必使用共享的全局名称。</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">changer</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">nonlocal</span> x; x = <span class="string">'new'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># def创建了一个对象并将其赋值给某一变量名.</span></span><br><span class="line">eg:<span class="function"><span class="keyword">def</span> <span class="title">adder</span><span class="params">(a,b=<span class="number">1</span>,*c)</span>:</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># return将一个结果对象发送给调用者</span></span><br><span class="line">eg:<span class="keyword">return</span> a+b+c[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="1-3函数的定义和调用"><a href="#1-3函数的定义和调用" class="headerlink" title="1.3函数的定义和调用"></a>1.3函数的定义和调用</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># def语句是实时执行的:Python函数在程序运行之前并不需要全部定义。更确切地讲. def在运行时才进行评估，而在def之中的代码在函数惆用后才会评估。</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">times</span><span class="params">(x,y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x * y</span><br><span class="line">times(<span class="number">3</span>,<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>15
+</code></pre><h3 id="1-4python中的多态"><a href="#1-4python中的多态" class="headerlink" title="1.4python中的多态"></a>1.4python中的多态</h3><ul>
+<li>就像我们看到的那样， ti mes 函数中表达式沪y的意义完全取决干x和y的对象类型，同样的函数，在一个实例下执行的是乘泣， 在另一个实例下执行的却是赋值。Py thon将对某一对象在某种语法的合理性交囱对象自身来判断。实际上， “*”在针对正被处理的对象进行了随机应变。这种依赖类型的行为称为多态</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># eg1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">times</span><span class="params">(x,y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x * y</span><br><span class="line">times(<span class="number">3</span>,<span class="number">5</span>)</span><br><span class="line">times(<span class="string">"ab"</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>&apos;ababab&apos;
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># eg2</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">intersect</span><span class="params">(seq1,seq2)</span>:</span></span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> seq1:</span><br><span class="line">        <span class="keyword">if</span> x <span class="keyword">in</span>  seq2:</span><br><span class="line">            res.append(x)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">s1 = <span class="string">"SDAF"</span></span><br><span class="line">s2 = <span class="string">"SDBOF"</span></span><br><span class="line"><span class="keyword">print</span> intersect(s1,s2)</span><br><span class="line"><span class="comment">#intersect是多态的,它可以支持多种类型,只要其支持扩展对象接口</span></span><br><span class="line">x = intersect([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],(<span class="number">1</span>,<span class="number">4</span>))</span><br><span class="line"><span class="keyword">print</span> x</span><br><span class="line"><span class="comment">#intersect函数相当慢(它执行嵌套循环) ，并不是真正的数学交集(结果中可能有重复的元素)，这个函数可以用一个单独的列表解析表达式来替代</span></span><br><span class="line">s1 = <span class="string">"SDAF"</span></span><br><span class="line">s2 = <span class="string">"SABOF"</span></span><br><span class="line"><span class="keyword">print</span> [x <span class="keyword">for</span> x <span class="keyword">in</span> s1 <span class="keyword">if</span> x <span class="keyword">in</span> s2]</span><br><span class="line">s1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">s2 = (<span class="number">1</span>,<span class="number">4</span>)</span><br><span class="line"><span class="keyword">print</span> [x <span class="keyword">for</span> x <span class="keyword">in</span> s1 <span class="keyword">if</span> x <span class="keyword">in</span> s2]</span><br></pre></td></tr></table></figure>
+<pre><code>[&apos;S&apos;, &apos;D&apos;, &apos;F&apos;]
+[1]
+[&apos;S&apos;, &apos;A&apos;, &apos;F&apos;]
+[1]
+</code></pre><h4 id="本地变量，以上例中的intersect函数为例："><a href="#本地变量，以上例中的intersect函数为例：" class="headerlink" title="本地变量，以上例中的intersect函数为例："></a>本地变量，以上例中的intersect函数为例：</h4><ul>
+<li>res,seq1,seq2,x都是intersect函数的本地变量</li>
+<li>所有的本地变量都会在函数调用时出现，并在函数退出时悄失</li>
+</ul>
+<h3 id="1-5-q-amp-a-个人理解"><a href="#1-5-q-amp-a-个人理解" class="headerlink" title="1.5 q&amp;a(个人理解)"></a>1.5 q&amp;a(个人理解)</h3><ul>
+<li>q:什么时候Python将会创建函数?在函数定义内部的语句什么时候运行? </li>
+<li>a:python函数是实时执行的，只有当Python运行到并执行def语句的时候才会创建函数，并且函数内部的代码也只会在调用函数的时候进行评估。</li>
+<li>q:当一个函数没有return语句时，它将返还什么? </li>
+<li>a:函数的几个要素包括：函数名，参数，处理过程，返回结果（return），其中处理过程不必要，但其他三个是一定有的（但是return不一定要写，在定义函数时可以不写return，函数会默认返回None。</li>
+<li>q:检查传入函数的对象类型有什么错误? </li>
+<li>a:<del>如果传入的参数数量不对或者传入的参数数量是对的，但参数类型不能被函数所接受，都会报TypeError的错误</del> </li>
+<li>a：检查传入函数的对象类型，实质上就是破坏函数的灵活性，把函数限制在特定的类型上。没有这类检查时，函数可能处理所有的对象类型: 任何支持函数所预期的接口的对象都能用。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/函数/" rel="tag"># 函数</a>
+          
+            <a href="/tags/python多态/" rel="tag"># python多态</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/14/python_import&reload/" rel="next" title="python基础之模块儿导入和重载">
+                <i class="fa fa-chevron-left"></i> python基础之模块儿导入和重载
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="Ipeid" />
+            
+              <p class="site-author-name" itemprop="name">Ipeid</p>
+              <p class="site-description motion-element" itemprop="description">当你的才华不足以实现你的梦想时，你更应该沉下心去学习！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ipeid" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/3e427ee125c8" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-star"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="ipeidata@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/5094854684/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python基础学习之函数"><span class="nav-number">1.</span> <span class="nav-text">python基础学习之函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-函数基础"><span class="nav-number">1.1.</span> <span class="nav-text">1.函数基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1什么是函数？为什么要用函数编程？"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1什么是函数？为什么要用函数编程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2函数相关的语句和表达式"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2函数相关的语句和表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3函数的定义和调用"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3函数的定义和调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4python中的多态"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4python中的多态</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地变量，以上例中的intersect函数为例："><span class="nav-number">1.1.4.1.</span> <span class="nav-text">本地变量，以上例中的intersect函数为例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-q-amp-a-个人理解"><span class="nav-number">1.1.5.</span> <span class="nav-text">1.5 q&amp;a(个人理解)</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ipeid</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
